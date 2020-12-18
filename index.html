@@ -1,0 +1,125 @@
+<html>
+<head>
+  <title>Guess the Picture!</title>
+  <style>
+  body {
+    background-color: AntiqueWhite;
+  }
+  h3 {
+    font-family: monospace;
+    color: Orange;
+    font-size: 35px;
+    animation: colorchange 5s linear 0s infinite;
+  }
+  @keyframes colorchange
+  {
+    from {background-color: white;}
+    to {background-color: beige;}
+  }
+  img {
+    width: 300px;
+    height: 200px;
+  }
+  button {
+    border-color: lightblue;
+    color: blue;
+  }
+  button:hover {
+    background-color: cyan;
+    color: blue;
+  }
+  </style>
+<script>
+  var questions = 0;
+  var score= 0;
+  var ans1 = "";
+  var ans2 = "";
+  var ans3 = "";
+  var ans4 = "";
+  var ans5 = "";
+
+  function GuessState()
+  {
+    document.getElementById("reset").style.visibility = "hidden";
+    if (questions == 0)
+    {
+        ans1 = document.getElementById("input").value;
+        document.getElementById("pic").innerHTML = "<img src = 'NewJersey.jpg'>";
+      if (ans1 == "Nebraska")
+      {
+          score = score + 1;
+      }
+      questions = questions + 1;
+    }
+    else if (questions == 1)
+    {
+      ans2 = document.getElementById("input").value;
+      document.getElementById("pic").innerHTML = "<img src = 'Nevada.jpg'>";
+      if (ans2 == "New Jersey")
+      {
+          score = score + 1;
+      }
+      questions = questions + 1;
+    }
+    else if (questions == 2)
+    {
+      ans3 = document.getElementById("input").value;
+      document.getElementById("pic").innerHTML = "<img src = 'Hawaii.png'>";
+      if (ans3 == "Nevada")
+      {
+          score = score + 1;
+      }
+      questions = questions + 1;
+    }
+    else if (questions == 3)
+    {
+      ans4 = document.getElementById("input").value;
+      document.getElementById("pic").innerHTML = "<img src = 'Florida.jpg'>";
+      if (ans4 == "Hawaii")
+      {
+          score = score + 1;
+      }
+      questions = questions + 1;
+    }
+    else if (questions == 4)
+    {
+      ans5 = document.getElementById("input").value;
+      if (ans5 == "Florida")
+      {
+          score = score + 1;
+      }
+    }
+    end();
+  }
+  function end()
+  {
+    var table = table + "The first answer was: Nebraska, you answered: + ans1 + <br>";
+    table = table + "The second answer was: New Jersey, you answered: + ans2 + <br>";
+    table = table + "The third answer was: Nevada, you answered: + ans3 + <br>";
+    table = table + "The fourth answer was: Hawaii, you answered: + ans4 + <br>";
+    table = table + "The fifth answer was: Florida, you answered: + ans5 + <br>";
+    document.getElementById("reset").style.visibility = "visible";
+  }
+  function reset()
+  {
+    table = "";
+    score = 0;
+    questions = 0;
+    document.getElementById("pic").innerHTML = "<img src = 'Nebraska.jpg'>";
+    document.getElementById("reset").style.visibility = "hidden";
+  }
+</script>
+</head>
+<body>
+  <center>
+  <h3>What is this state?</h3>
+  <span id = "pic"><img src = "Nebraska.jpg"></span>
+  <br>
+  <br>
+  <input type = "text" id = "input">
+  <input type = "button" id = "enter" value = "Submit" onclick = "GuessState()">
+  <span id = "Results"></span>
+  <input type = "button" id = "reset" value = "Play Again" onclick = "reset()">
+  <br>
+</body>
+</html>
